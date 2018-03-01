@@ -2,7 +2,7 @@ package myVelib;
 
 public class BadBicycleCreationException extends Exception {
 
-	/**
+	/**Une classe erreur dans le cas où l'utilisateur n'a pas tapé un bon type lors de la création du vélo
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;

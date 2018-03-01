@@ -1,13 +1,23 @@
 package myVelib;
 
 import java.util.ArrayList;
-
+/**
+ * Une classe permettant de créer les objets de même nom
+ * @author xavier
+ *
+ */
 public class ParkingSlot {
 	protected static Long compteur=(long) 0;
 	protected Long slotID;
 	protected String state;
 	protected Bicycle bicycle;
 	protected ArrayList<TimeState> history;
+	/**
+	 * Ce contructeur peux être amener à renvoyer une erreur dans le cas où le type d'état n'a pas été écrit correctement ou n'existe pas
+	 * @param bicycle
+	 * @param State
+	 * @throws BadParkingSlotCreationException
+	 */
 	public ParkingSlot(Bicycle bicycle, String State) throws BadParkingSlotCreationException {
 		super();
 		if (State=="Occupied" || State=="Free" ||State=="Broken"){
@@ -22,8 +32,16 @@ public class ParkingSlot {
 	public String getState() {
 		return state;
 	}
-	public void setState(String state) {
-		this.state = state;
+	/**
+	 * Le changement d'état est aussi contrôlé afin seul les états possibles soit mis
+	 * @param state
+	 * @throws BadParkingSlotCreationException 
+	 */
+	public void setState(String state) throws BadParkingSlotCreationException {
+		if (state=="Occupied" || state=="Free" ||state=="Broken"){
+			this.state = state;}
+		else{
+			throw new BadParkingSlotCreationException(state);}
 	}
 	public Long getSlotID() {
 		return slotID;

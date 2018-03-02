@@ -9,22 +9,28 @@ public class VlibreCard extends Card{
 			this.setTimeCredit(this.getTimeCredit()+5);
 		}
 		long duration = Card.getDuration(loc.getTimeStart(), loc.getTimeStart(), TimeUnit.MINUTES);
-		long hours = duration%60;
+		long hours = duration/60;
+		long min = duration%60;
 		if (loc.getBike().getTypeBike().equals("Mechanic")) {
-			if (hours<=1) {
+			if(hours<1) {
 				return 0;
 			}
-			else
-				duration = duration - this.getTimeCredit();
-				return (int)hours;
+			if (min<this.getTimeCredit()) {
+				this.setTimeCredit(getTimeCredit()-(int)min);
+				hours--;
+			}
+			return (int)hours;
 		}
 		else
 			if(loc.getBike().getTypeBike().equals("Electric")) {
-				if (hours<=1) {
-					return 1;
+				if(hours<1) {
+					return 0;
 				}
-				else 
-					return 2*(int)hours+1;
+				if (min<this.getTimeCredit()) {
+					this.setTimeCredit(getTimeCredit()-(int)min);
+					hours--;
+				}
+				return 2*(int)hours+1;
 			}
 		return 0;
 	}

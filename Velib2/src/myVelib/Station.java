@@ -18,7 +18,7 @@ public class Station extends Observable {
 	protected String name;
 	protected ArrayList<Ride> rideList;
 	/**
-	 * Ce contructeur peux être amener à renvoyer une erreur dans le cas où le type de station ou le type d'état n'a pas été écrit correctement ou n'existe pas
+	 * Ce contructeur peux être amené à renvoyer une erreur dans le cas où le type de station ou le type d'état n'a pas été écrit correctement ou n'existe pas
 	 * @param parkingSlotList
 	 * @param typeStation doit être une chaine de caractère du type Standard ou Plus
 	 * @param state doit être une chaine de caractère du type on service ou offline
